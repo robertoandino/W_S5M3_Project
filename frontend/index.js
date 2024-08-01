@@ -57,9 +57,18 @@ function moduleProject3() {
     })
    
 
-    div.addEventListener('click', () => {
+    /*div.addEventListener('click', () => {
+      
       div.classList.toggle('active');
-    })
+
+    })*/
+
+      div.addEventListener('click', evt => {
+        document.querySelectorAll('.learner-card').forEach(div => {
+          div.classList.remove('active')
+        })
+        div.classList.add('active')
+      })
 
     return div;
   }
@@ -117,13 +126,36 @@ function moduleProject3() {
 
     let p3 = document.createElement('p');
     p3.classList = "contact-email"
-    p3.textContent = "email: ";
+    p3.textContent = "Email: ";
     p3.appendChild(a);
     div1.appendChild(p3)
 
     footer.appendChild(div1);
-    
 
+    let div2 = document.createElement('div');
+    div2.classList = "social-media"
+
+    let a1 = document.createElement('a');
+    a1.href = footerData.twitter;
+    a1.textContent = 'Twitter';
+    div2.appendChild(a1);
+
+    let a2 = document.createElement('a');
+    a2.href = footerData.facebook;
+    a2.textContent = 'Facebook';
+    div2.appendChild(a2);
+
+    let a3 = document.createElement('a');
+    a3.href = footerData.instagram;
+    a3.textContent = 'Instagram';
+    div2.appendChild(a3);
+
+    footer.appendChild(div2)
+
+    let div3 = document.createElement('div');
+    div3.textContent = "© BLOOM INSTITUTE OF TECHNOLOGY 2024"
+
+    footer.appendChild(div3)
 
     return footer;
   }
@@ -143,6 +175,12 @@ function moduleProject3() {
   // 👉 TASK 4 - Clicking on the section should deactivate the active card
 
   //  ✨ do your magic here
+  document.addEventListener('click', evt => {
+    if(evt.target === document.querySelector('section')){
+      const learners = document.querySelectorAll('.learner-card')
+      learners.forEach(card => card.classList.remove('active'))
+    }
+  })
 }
 
 // ❗ DO NOT CHANGE THIS CODE
